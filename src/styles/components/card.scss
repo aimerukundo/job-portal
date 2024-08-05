@@ -1,0 +1,20 @@
+@use "sass:math";
+
+.card {
+  padding: $base-padding;
+  box-shadow: $base-box-shadow;
+  border-radius: $base-border-radius * 2;
+
+  .card-title {
+    font-size: $base-font-size;
+    padding-bottom: $base-padding;
+    font-weight: bold;
+  }
+  .card-body {
+    font-size: $base-font-size;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}

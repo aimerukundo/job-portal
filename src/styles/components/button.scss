@@ -1,0 +1,48 @@
+@mixin btn() {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  border: 0;
+  border-radius: $base-border-radius;
+  width: 100px;
+  height: 40px;
+  box-sizing: border-box;
+}
+
+.btn {
+  @include btn;
+}
+
+.btn-primary {
+  @include btn();
+  background-color: #dc3545;
+  color:#fff;
+  &:hover {
+    background-color: darken(#dc3545, 5);
+  }
+}
+
+.btn-outlined-white {
+  @include btn();
+  border: $base-border-thickness solid #fff;
+  background-color: transparent;
+  color: white;
+  &:hover {
+    background-color: darken( #fff,  10);
+    color: black;
+    transition: ease-in-out;
+  }
+}
+
+.btn-outlined-blue {
+  @include btn();
+  border: $base-border-thickness solid #0d6efd;
+  background-color: transparent;
+  color: #0d6efd;
+  &:hover {
+    background-color: lighten( #0d6efd,  10);
+    color: white;
+    transition: ease-in-out;
+  }
+}
+
