@@ -1,0 +1,49 @@
+@import "../app.component.scss";
+
+.jobseeker-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-container {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 0 auto;
+}
+
+.input-group {
+  display: flex;
+  gap: 20px;
+}
+
+.button {
+  display: flex;
+  justify-content: end;
+}
+
+.card-2 {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  max-height: 250px;
+}
+
+.card-2-title {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.btn-card-2 {
+  width: 100%;
+}
+
+@media (max-width: 720px) {
+  .input-group {
+    flex-wrap: wrap;
+  }
+  .jobseeker-container{
+    margin: 0 auto; 
+  }
+}
