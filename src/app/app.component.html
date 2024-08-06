@@ -2,8 +2,13 @@
   <nav class="container navbar">
     <h2 class="font-xl text-white">Job-portal</h2>
     <div class="">
-      <button class="btn-outlined-white font-semibold">Jobseekers</button>
-      <button class="btn-primary ml-2 font-semibold">Employeers</button>
+      <button
+        class="btn-outlined-white font-semibold"
+        [routerLink]="['/jobseekers/signup']"
+      >
+        Jobseekers
+      </button>
+      <button class="btn-primary ml-2 font-semibold" [routerLink]="['/employers/signup']">Employeers</button>
     </div>
   </nav>
 </header>

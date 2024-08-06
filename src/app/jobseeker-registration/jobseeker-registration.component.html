@@ -1,27 +1,99 @@
 <div class="jobseeker-container mt-2">
   <div class="col-12-xs col-7-md col-7-xl col-7-xxl">
     <div class="card bg-white p-2">
-      <h1 class="font-xxl font-semibold text-light-blue">Jobseeker Sign-up</h1>
+      <h1 class="font-xxl font-semibold text-light-blue mb-2">
+        Jobseeker Sign-up
+      </h1>
       <div class="form-container p-2">
-        <form>
+        <form [formGroup]="signupForm" (ngSubmit)="signUpJobseeker()">
           <div class="input-group">
             <div class="col-12-xs col-8-md col-6-xl">
-              <label class="font-md">First Name</label>
-              <input type="text" class="input" />
+              <label for="first-name" class="font-md">First Name</label>
+              <input
+                id="first-name"
+                type="text"
+                class="input"
+                formControlName="firstName"
+                [ngClass]="{
+                  'border-red':
+                    signupForm.controls.firstName.invalid &&
+                    signupForm.controls.firstName.touched &&
+                    signupForm.controls.firstName.errors?.['required']
+                }"
+              />
+              <p
+                *ngIf="signupForm.controls.firstName.invalid &&
+                signupForm.controls.firstName.touched && signupForm.controls.firstName.errors?.['required']"
+                class="text-red font-sm"
+              >
+                Field is required
+              </p>
             </div>
             <div class="col-12-xs col-8-md col-6-xl">
-              <label class="font-md">Last Name</label>
-              <input type="text" class="input" />
+              <label for="last-name" class="font-md">Last Name</label>
+              <input
+                id="last-name"
+                type="text"
+                class="input"
+                formControlName="lastName"
+                [ngClass]="{
+                  'border-red':
+                    signupForm.controls.lastName.invalid &&
+                    signupForm.controls.lastName.touched &&
+                    signupForm.controls.lastName.errors?.['required']
+                }"
+              />
+              <p
+                *ngIf="signupForm.controls.lastName.invalid &&
+                signupForm.controls.lastName.touched && signupForm.controls.lastName.errors?.['required']"
+                class="text-red font-sm"
+              >
+                Field is required
+              </p>
             </div>
           </div>
           <div class="input-group mt-2">
             <div class="col-12-xs col-8-md col-6-xl">
-              <label class="font-md">Email</label>
-              <input type="email" class="input" />
+              <label for="email" class="font-md">Email</label>
+              <input
+                id="email"
+                type="email"
+                class="input"
+                formControlName="email"
+                [ngClass]="{
+                  'border-red':
+                    signupForm.controls.email.invalid &&
+                    signupForm.controls.email.touched &&
+                    signupForm.controls.email.errors?.['required']
+                }"
+              />
+              <p
+                *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched && signupForm.controls.email.errors?.['required']"
+                class="text-red font-sm"
+              >
+                Field is required
+              </p>
             </div>
             <div class="col-12-xs col-8-md col-6-xl">
-              <label class="font-md">Password</label>
-              <input type="password" class="input" />
+              <label for="password" class="font-md">Password</label>
+              <input
+                id="password"
+                type="password"
+                class="input"
+                formControlName="password"
+                [ngClass]="{
+                  'border-red':
+                    signupForm.controls.password.invalid &&
+                    signupForm.controls.password.touched &&
+                    signupForm.controls.password.errors?.['required']
+                }"
+              />
+              <p
+                *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched && signupForm.controls.password.errors?.['required']"
+                class="text-red font-sm"
+              >
+                Field is required
+              </p>
             </div>
           </div>
           <div class="button mt-2">
@@ -34,9 +106,9 @@
     </div>
   </div>
   <div class="card card-2 bg-white col-4-xl p-2 col-12-xs col-12-md">
-    <h1 class="font-normal card-2-title">Already Registered?</h1>
+    <h1 class="font-normal font-xl card-2-title">Already Registered?</h1>
     <button class="btn-outlined-blue btn-card-2">LOGIN HERE</button>
-    <h1 class="font-normal card-2-title">Are you an Employer?</h1>
+    <h1 class="font-normal font-xl card-2-title">Are you an Employer?</h1>
     <button class="btn-outlined-blue btn-card-2">LOGIN HERE</button>
   </div>
 </div>
