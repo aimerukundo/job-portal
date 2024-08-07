@@ -62,7 +62,9 @@
           </div>
         </div>
         <div class="card-content-secondary col-6-xl">
-          <p class="p-text">Apply for jobs based on your skills and interests</p>
+          <p class="p-text">
+            Apply for jobs based on your skills and interests
+          </p>
           <img
             src="../../assets/candidate-searching.svg"
             alt="candidate-job"
@@ -82,7 +84,12 @@
   </div>
   <div class="card card-2 bg-white col-4-xl p-2 col-12-xs col-12-md">
     <h1 class="font-normal font-xl card-2-title">Don't have an account?</h1>
-    <button class="btn-outlined-blue btn-card-2">REGISTER HERE</button>
+    <button
+      class="btn-outlined-blue btn-card-2"
+      [routerLink]="['/jobseekers/signup']"
+    >
+      REGISTER HERE
+    </button>
     <h1 class="font-normal font-xl card-2-title">Are you an Employer?</h1>
     <button class="btn-outlined-blue btn-card-2">LOGIN HERE</button>
   </div>
