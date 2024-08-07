@@ -16,14 +16,14 @@
                 formControlName="firstName"
                 [ngClass]="{
                   'border-red':
-                    signupForm.controls.firstName.invalid &&
-                    signupForm.controls.firstName.touched &&
-                    signupForm.controls.firstName.errors?.['required']
+                    firstName?.invalid &&
+                    firstName?.touched &&
+                    firstName?.errors?.['required']
                 }"
               />
               <p
-                *ngIf="signupForm.controls.firstName.invalid &&
-                signupForm.controls.firstName.touched && signupForm.controls.firstName.errors?.['required']"
+                *ngIf="firstName?.invalid &&
+                firstName?.touched && firstName?.errors?.['required']"
                 class="text-red font-sm"
               >
                 Field is required
@@ -38,14 +38,14 @@
                 formControlName="lastName"
                 [ngClass]="{
                   'border-red':
-                    signupForm.controls.lastName.invalid &&
-                    signupForm.controls.lastName.touched &&
-                    signupForm.controls.lastName.errors?.['required']
+                    lastName?.invalid &&
+                    lastName?.touched &&
+                    lastName?.errors?.['required']
                 }"
               />
               <p
-                *ngIf="signupForm.controls.lastName.invalid &&
-                signupForm.controls.lastName.touched && signupForm.controls.lastName.errors?.['required']"
+                *ngIf="lastName?.invalid &&
+                lastName?.touched && lastName?.errors?.['required']"
                 class="text-red font-sm"
               >
                 Field is required
@@ -62,13 +62,13 @@
                 formControlName="email"
                 [ngClass]="{
                   'border-red':
-                    signupForm.controls.email.invalid &&
-                    signupForm.controls.email.touched &&
-                    signupForm.controls.email.errors?.['required']
+                    email?.invalid &&
+                    email?.touched &&
+                    email?.errors?.['required']
                 }"
               />
               <p
-                *ngIf="signupForm.controls.email.invalid && signupForm.controls.email.touched && signupForm.controls.email.errors?.['required']"
+                *ngIf="email?.invalid && email?.touched && email?.errors?.['required']"
                 class="text-red font-sm"
               >
                 Field is required
@@ -83,13 +83,13 @@
                 formControlName="password"
                 [ngClass]="{
                   'border-red':
-                    signupForm.controls.password.invalid &&
-                    signupForm.controls.password.touched &&
-                    signupForm.controls.password.errors?.['required']
+                    password?.invalid &&
+                    password?.touched &&
+                    password?.errors?.['required']
                 }"
               />
               <p
-                *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched && signupForm.controls.password.errors?.['required']"
+                *ngIf="password?.invalid && password?.touched && password?.errors?.['required']"
                 class="text-red font-sm"
               >
                 Field is required

@@ -19,16 +19,16 @@
                     formControlName="email"
                     [ngClass]="{
                               'border-red':
-                                loginForm.controls.email.invalid &&
-                                loginForm.controls.email.touched &&
-                                loginForm.controls.email.errors?.['required']
+                                email?.invalid &&
+                                email?.touched &&
+                                email?.errors?.['required']
                             }"
                   />
                   <p
-                    *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.errors?.['required']"
+                    *ngIf="email?.invalid && email?.touched && email?.errors?.['required']"
                     class="text-red font-sm"
                   >
-                    Field is required
+                    {{ required }}
                   </p>
                 </div>
                 <div class="col-12-xs col-12-md col-12-xl">
@@ -40,16 +40,16 @@
                     formControlName="password"
                     [ngClass]="{
                               'border-red':
-                                loginForm.controls.password.invalid &&
-                                loginForm.controls.password.touched &&
-                                loginForm.controls.password.errors?.['required']
+                                password?.invalid &&
+                                password?.touched &&
+                                password?.errors?.['required']
                             }"
                   />
                   <p
-                    *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched && loginForm.controls.password.errors?.['required']"
+                    *ngIf="password?.invalid && password?.touched && password?.errors?.['required']"
                     class="text-red font-sm"
                   >
-                    Field is required
+                    {{ required }}
                   </p>
                 </div>
               </div>
@@ -62,7 +62,9 @@
           </div>
         </div>
         <div class="card-content-secondary col-6-xl">
-          <p class="p-text">Apply for jobs based on your skills and interests</p>
+          <p class="p-text">
+            Apply for jobs based on your skills and interests
+          </p>
           <img
             src="../../assets/candidate-searching.svg"
             alt="candidate-job"
@@ -81,7 +83,9 @@
     </div>
   </div>
   <div class="card card-2 bg-white col-4-xl p-2 col-12-xs col-12-md">
-    <h1 class="font-normal font-xl card-2-title">Don't have an account?</h1>
+    <h1 class="font-normal font-xl card-2-title">
+      Don&apos;t have an account?
+    </h1>
     <button class="btn-outlined-blue btn-card-2">REGISTER HERE</button>
     <h1 class="font-normal font-xl card-2-title">Are you an Employer?</h1>
     <button class="btn-outlined-blue btn-card-2">LOGIN HERE</button>
