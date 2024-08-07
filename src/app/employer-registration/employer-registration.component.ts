@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { REQUIRED_FIELD } from '../../constants/constants';
 
 @Component({
   selector: 'app-employer-registration',
@@ -7,6 +8,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrl: './employer-registration.component.scss',
 })
 export class EmployerRegistrationComponent {
+  required = '';
+  constructor() {
+    this.required = REQUIRED_FIELD;
+  }
+
   signupForm = new FormGroup({
     companyName: new FormControl('', [
       Validators.required,

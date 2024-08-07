@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { REQUIRED_FIELD } from '../../constants/constants';
 
 @Component({
   selector: 'app-jobseekers-login',
@@ -9,7 +10,10 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './jobseekers-login.component.scss',
 })
 export class JobseekersLoginComponent {
-  constructor(private auth: AuthService, private toastr: ToastrService) {}
+  required = '';
+  constructor(private auth: AuthService, private toastr: ToastrService) {
+    this.required = REQUIRED_FIELD;
+  }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -18,6 +22,14 @@ export class JobseekersLoginComponent {
       Validators.minLength(8),
     ]),
   });
+
+  get email() {
+    return this.loginForm.get('email');
+  }
+
+  get password() {
+    return this.loginForm.get('password');
+  }
 
   public loginJobseeker() {
     this.auth
