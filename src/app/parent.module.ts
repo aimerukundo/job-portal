@@ -3,13 +3,28 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { JobseekerRegistrationComponent } from './jobseeker-registration/jobseeker-registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
-import { EmployerRegistrationComponent } from './employer-registration/employer-registration.component';
+import { ToastrModule } from 'ngx-toastr';
+import {
+  HttpClientModule,
+  provideHttpClient,
+  withInterceptors,
+} from '@angular/common/http';
 
+import { EmployerRegistrationComponent } from './employer-registration/employer-registration.component';
+import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
 
 @NgModule({
   declarations: [JobseekerRegistrationComponent, EmployerRegistrationComponent],
-  imports: [CommonModule, RouterModule, ReactiveFormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ToastrModule.forRoot(),
+  ],
   exports: [JobseekerRegistrationComponent, EmployerRegistrationComponent],
+  providers: [
+    provideHttpClient(withInterceptors([authInterceptorInterceptor])),
+  ],
 })
 export class ParentModule {}

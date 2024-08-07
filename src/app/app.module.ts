@@ -6,10 +6,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ParentModule } from './parent.module';
-
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, ParentModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ParentModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
+  ],
   providers: [provideAnimationsAsync()],
   bootstrap: [AppComponent],
 })
