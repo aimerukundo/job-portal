@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  APN: '20a073af45001bdfef1d4f66230682df',
+  APN: 'b0978767e7f8de8af1145ba3827a9685',
   APIURL: 'https://https://go-auth-v1.onrender.com',
 };

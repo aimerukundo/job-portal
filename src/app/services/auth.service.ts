@@ -16,6 +16,7 @@ export class AuthService {
       email: jobSeekerData.email,
       password: jobSeekerData.password,
     };
+
     const jobSeekerCred = this.httpClient.post(
       `${environment.APIURL}/user/signup`,
       user
