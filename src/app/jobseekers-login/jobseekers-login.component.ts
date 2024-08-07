@@ -40,7 +40,7 @@ export class JobseekersLoginComponent {
       .subscribe({
         next: (jobSeekerData) => {
           this.toastr.success('successfully logged in');
-          console.log(jobSeekerData);
+          localStorage.setItem('jobSeeker', JSON.stringify(jobSeekerData));
         },
         error: () => {
           this.toastr.error('something went wrong');
