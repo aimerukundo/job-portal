@@ -1,0 +1,89 @@
+<div class="jobseeker-container mt-2">
+  <div class="col-12-xs col-7-md col-7-xl col-7-xxl">
+    <div class="card bg-white p-2">
+      <div class="card-content">
+        <div class="">
+          <h1 class="font-xxl font-semibold text-light-blue mb-1">
+            Jobseekers
+          </h1>
+          <p class="mb-1">Log in to your Jobseeker Account</p>
+          <div class="form-container">
+            <form [formGroup]="loginForm" (ngSubmit)="loginJobseeker()">
+              <div class="input-group mt-2">
+                <div class="col-12-xs col-12-md col-12-xl">
+                  <label for="email" class="font-md">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    class="input"
+                    formControlName="email"
+                    [ngClass]="{
+                              'border-red':
+                                loginForm.controls.email.invalid &&
+                                loginForm.controls.email.touched &&
+                                loginForm.controls.email.errors?.['required']
+                            }"
+                  />
+                  <p
+                    *ngIf="loginForm.controls.email.invalid && loginForm.controls.email.touched && loginForm.controls.email.errors?.['required']"
+                    class="text-red font-sm"
+                  >
+                    Field is required
+                  </p>
+                </div>
+                <div class="col-12-xs col-12-md col-12-xl">
+                  <label for="password" class="font-md">Password</label>
+                  <input
+                    id="password"
+                    type="password"
+                    class="input"
+                    formControlName="password"
+                    [ngClass]="{
+                              'border-red':
+                                loginForm.controls.password.invalid &&
+                                loginForm.controls.password.touched &&
+                                loginForm.controls.password.errors?.['required']
+                            }"
+                  />
+                  <p
+                    *ngIf="loginForm.controls.password.invalid && loginForm.controls.password.touched && loginForm.controls.password.errors?.['required']"
+                    class="text-red font-sm"
+                  >
+                    Field is required
+                  </p>
+                </div>
+              </div>
+              <div class="button mt-2">
+                <button type="submit" class="btn-primary font-semibold">
+                  Login
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="card-content-secondary col-6-xl">
+          <p class="p-text">Apply for jobs based on your skills and interests</p>
+          <img
+            src="../../assets/candidate-searching.svg"
+            alt="candidate-job"
+            width="300"
+          />
+          <p class="p-text mt-1">
+            Looking for a Job? Find a job according to your profile
+          </p>
+          <img
+            src="../../assets/candidate-submitting-cv.svg"
+            alt="candidate-cv"
+            width="300"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card card-2 bg-white col-4-xl p-2 col-12-xs col-12-md">
+    <h1 class="font-normal font-xl card-2-title">Don't have an account?</h1>
+    <button class="btn-outlined-blue btn-card-2">REGISTER HERE</button>
+    <h1 class="font-normal font-xl card-2-title">Are you an Employer?</h1>
+    <button class="btn-outlined-blue btn-card-2">LOGIN HERE</button>
+  </div>
+</div>
