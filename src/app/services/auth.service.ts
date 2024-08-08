@@ -9,7 +9,7 @@ import { environment } from '../../../environments/environment.development';
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
 
-  createJobSeeker(jobSeekerData: IJobSeeker) {
+  public createJobSeeker(jobSeekerData: IJobSeeker) {
     const user = {
       first_name: jobSeekerData.firstName,
       last_name: jobSeekerData.lastName,
@@ -23,4 +23,16 @@ export class AuthService {
     );
     return jobSeekerCred;
   }
+
+  public loginJobSeeker(jobSeekerData: Partial<IJobSeeker>) {
+    const user = {
+      email: jobSeekerData.email,
+      password: jobSeekerData.password,
+    };
+    const jobSeekerCred = this.httpClient.post(
+      `${environment.APIURL}/user/login`, user
+    );
+    return jobSeekerCred;
+  }
+
 }
