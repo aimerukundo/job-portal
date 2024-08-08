@@ -1,0 +1,198 @@
+<div class="jobseeker-container mt-2">
+  <div class="col-12-xs col-7-md col-12-xl col-12-xxl">
+    <div class="card bg-white p-2">
+      <h1 class="font-xxl font-semibold text-light-blue mb-2">
+        Complete your information
+      </h1>
+      <p class="mb-2">You must complete your profile to apply for jobs.</p>
+      <div class="form-container col-8-xl p-2">
+        <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
+          <div class="input-group">
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="first-name" class="font-md">First Name</label>
+              <input
+                id="first-name"
+                type="text"
+                class="input"
+                formControlName="firstName"
+                [ngClass]="{
+                    'border-red':
+                      firstName?.invalid &&
+                      firstName?.touched &&
+                      firstName?.errors?.['required']
+                  }"
+              />
+              <p
+                *ngIf="firstName?.invalid &&
+                  firstName?.touched && firstName?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="last-name" class="font-md">Last Name</label>
+              <input
+                id="last-name"
+                type="text"
+                class="input"
+                formControlName="lastName"
+                [ngClass]="{
+                    'border-red':
+                      lastName?.invalid &&
+                      lastName?.touched &&
+                      lastName?.errors?.['required']
+                  }"
+              />
+              <p
+                *ngIf="lastName?.invalid &&
+                  lastName?.touched && lastName?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="gender" class="font-md">Gender</label>
+              <select
+                id="gender"
+                class="input"
+                formControlName="gender"
+                [ngClass]="{
+                      'border-red':
+                        gender?.invalid &&
+                        gender?.touched &&
+                        gender?.errors?.['required']
+                    }"
+              >
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <p
+                *ngIf="gender?.invalid &&
+                    gender?.touched && gender?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="dateOfBirth" class="font-md">Date of Birth</label>
+              <input type="date" class="input" />
+              <p
+                *ngIf="dateOfBirth?.invalid &&
+                    dateOfBirth?.touched && dateOfBirth?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="region" class="font-md">Region</label>
+
+              <select
+                id="region"
+                class="input"
+                formControlName="region"
+                [ngClass]="{
+                      'border-red':
+                        region?.invalid &&
+                        region?.touched &&
+                        region?.errors?.['required']
+                    }"
+              >
+                <option value="Takoradi">Takoradi</option>
+                <option value="Accra">Accra</option>
+                <option value="Kumasi">Kumasi</option>
+              </select>
+              <p
+                *ngIf="region?.invalid &&
+                    region?.touched && region?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="city" class="font-md">City</label>
+              <input
+                id="city"
+                type="text"
+                class="input"
+                formControlName="city"
+                [ngClass]="{
+                      'border-red':
+                        city?.invalid &&
+                        city?.touched &&
+                        city?.errors?.['required']
+                    }"
+              />
+              <p
+                *ngIf="city?.invalid &&
+                    city?.touched && city?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+          </div>
+          <div class="input-group">
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="salary" class="font-md">Monthly Salary Expectation</label>
+              <input
+                id="salary"
+                type="number"
+                class="input"
+                formControlName="salary"
+                [ngClass]="{
+                    'border-red':
+                      salary?.invalid &&
+                      salary?.touched &&
+                      salary?.errors?.['required']
+                  }"
+              />
+              <p
+                *ngIf="salary?.invalid &&
+                  salary?.touched && salary?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+            <div class="col-12-xs col-8-md col-6-xl">
+              <label for="resume" class="font-md">Resume</label>
+              <input
+                id="resume"
+                type="file"
+                class="input-file"
+                formControlName="lastName"
+                [ngClass]="{
+                    'border-red':
+                      resume?.invalid &&
+                      resume?.touched &&
+                      resume?.errors?.['required']
+                  }"
+              />
+              <p
+                *ngIf="resume?.invalid &&
+                  resume?.touched && resume?.errors?.['required']"
+                class="text-red font-sm"
+              >
+                {{ required }}
+              </p>
+            </div>
+          </div>
+          <div class="button mt-2">
+            <button type="submit" class="btn-primary font-semibold">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
