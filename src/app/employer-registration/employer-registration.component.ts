@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { REQUIRED_FIELD } from '../../constants/constants';
-
+import { AuthService } from '../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-employer-registration',
   templateUrl: './employer-registration.component.html',
@@ -9,7 +10,7 @@ import { REQUIRED_FIELD } from '../../constants/constants';
 })
 export class EmployerRegistrationComponent {
   required = '';
-  constructor() {
+  constructor(private auth: AuthService, private toastr: ToastrService) {
     this.required = REQUIRED_FIELD;
   }
 
@@ -29,5 +30,36 @@ export class EmployerRegistrationComponent {
     ]),
   });
 
-  public signUpEmployer() {}
+  get companyName() {
+    return this.signupForm.get('companyName');
+  }
+
+  get contactName() {
+    return this.signupForm.get('contactName');
+  }
+
+  get businessEmail() {
+    return this.signupForm.get('businessEmail');
+  }
+
+  get password() {
+    return this.signupForm.get('password');
+  }
+
+
+  public signUpEmployer() {
+    this.auth.createEmployer({
+      companyName: this.signupForm.value.companyName as string,
+      contactName: this.signupForm.value.contactName as string,
+      businessEmail: this.signupForm.value.businessEmail as string,
+      password: this.signupForm.value.password as string,
+    }).subscribe({
+      next: () => {
+        this.toastr.success('successfully signup');
+      },
+      error: () => {
+        this.toastr.error('something went wrong');
+      },
+    })
+  }
 }

@@ -16,17 +16,17 @@
                 formControlName="companyName"
                 [ngClass]="{
                     'border-red':
-                      signupForm.controls.companyName.invalid &&
-                      signupForm.controls.companyName.touched &&
-                      signupForm.controls.companyName.errors?.['required']
+                      companyName?.invalid &&
+                      companyName?.touched &&
+                      companyName?.errors?.['required']
                   }"
               />
               <p
-                *ngIf="signupForm.controls.companyName.invalid &&
-                  signupForm.controls.companyName.touched && signupForm.controls.companyName.errors?.['required']"
+                *ngIf="companyName?.invalid &&
+                  companyName?.touched && companyName?.errors?.['required']"
                 class="text-red font-sm"
               >
-                Field is required
+                {{ required }}
               </p>
             </div>
             <div class="col-12-xs col-8-md col-6-xl">
@@ -38,17 +38,17 @@
                 formControlName="contactName"
                 [ngClass]="{
                     'border-red':
-                      signupForm.controls.contactName.invalid &&
-                      signupForm.controls.contactName.touched &&
-                      signupForm.controls.contactName.errors?.['required']
+                      contactName?.invalid &&
+                      contactName?.touched &&
+                      contactName?.errors?.['required']
                   }"
               />
               <p
-                *ngIf="signupForm.controls.contactName.invalid &&
-                  signupForm.controls.contactName.touched && signupForm.controls.contactName.errors?.['required']"
+                *ngIf="contactName?.invalid &&
+                  contactName?.touched && contactName?.errors?.['required']"
                 class="text-red font-sm"
               >
-                Field is required
+                {{ required }}
               </p>
             </div>
           </div>
@@ -64,16 +64,16 @@
                 formControlName="businessEmail"
                 [ngClass]="{
                     'border-red':
-                      signupForm.controls.businessEmail.invalid &&
-                      signupForm.controls.businessEmail.touched &&
-                      signupForm.controls.businessEmail.errors?.['required']
+                      businessEmail?.invalid &&
+                      businessEmail?.touched &&
+                      businessEmail?.errors?.['required']
                   }"
               />
               <p
-                *ngIf="signupForm.controls.businessEmail.invalid && signupForm.controls.businessEmail.touched && signupForm.controls.businessEmail.errors?.['required']"
+                *ngIf="businessEmail?.invalid && businessEmail?.touched && signupForm.controls.businessEmail.errors?.['required']"
                 class="text-red font-sm"
               >
-                Field is required
+                {{ required }}
               </p>
             </div>
             <div class="col-12-xs col-8-md col-6-xl">
@@ -85,16 +85,16 @@
                 formControlName="password"
                 [ngClass]="{
                     'border-red':
-                      signupForm.controls.password.invalid &&
-                      signupForm.controls.password.touched &&
-                      signupForm.controls.password.errors?.['required']
+                      password?.invalid &&
+                      password?.touched &&
+                      password?.errors?.['required']
                   }"
               />
               <p
-                *ngIf="signupForm.controls.password.invalid && signupForm.controls.password.touched && signupForm.controls.password.errors?.['required']"
+                *ngIf="password?.invalid && password?.touched && password?.errors?.['required']"
                 class="text-red font-sm"
               >
-                Field is required
+                {{ required }}
               </p>
             </div>
           </div>
