@@ -1,16 +1,17 @@
 import { Component } from '@angular/core';
+import { REQUIRED_FIELD } from '../../constants/constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { REQUIRED_FIELD } from '../../constants/constants';
 
 @Component({
-  selector: 'app-jobseekers-login',
-  templateUrl: './jobseekers-login.component.html',
-  styleUrl: './jobseekers-login.component.scss',
+  selector: 'app-employer-login',
+  templateUrl: './employer-login.component.html',
+  styleUrl: './employer-login.component.scss'
 })
-export class JobseekersLoginComponent {
+export class EmployerLoginComponent {
   required = '';
+
   constructor(private auth: AuthService, private toastr: ToastrService) {
     this.required = REQUIRED_FIELD;
   }
@@ -31,23 +32,23 @@ export class JobseekersLoginComponent {
     return this.loginForm.get('password');
   }
 
-  public loginJobseeker() {
+  public loginEmployer() {
     this.auth
-      .loginJobSeeker({
-        email: this.loginForm.value.email as string,
+      .loginEmployer({
+        businessEmail: this.loginForm.value.email as string,
         password: this.loginForm.value.password as string,
       })
       .subscribe({
-        next: (jobSeekerData) => {
+        next: (employerData) => {
           this.toastr.success('successfully logged in');
-          localStorage.setItem('jobSeeker', JSON.stringify(jobSeekerData));
+          localStorage.setItem('employer', JSON.stringify(employerData));
         },
         error: () => {
           this.toastr.error('something went wrong');
         },
         complete: () => {
           this.loginForm.reset();
-        },
+        }
       });
   }
 }

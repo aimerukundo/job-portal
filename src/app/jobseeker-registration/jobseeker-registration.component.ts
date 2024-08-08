@@ -61,8 +61,11 @@ export class JobseekerRegistrationComponent {
         error: () => {
           this.toastr.error('something went wrong');
         },
+        complete: () => {
+          this.signupForm.reset();
+        }
       });
 
-    this.signupForm.reset();
+    
   }
 }

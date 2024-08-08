@@ -65,4 +65,16 @@ export class AuthService {
     );
     return employerCred;
   }
+
+  public loginEmployer(employerData: Partial<IEmployer>) {
+    const user = {
+      email: employerData.businessEmail,
+      password: employerData.password,
+    };
+    const employerCred = this.httpClient.post(
+      `${environment.APIURL}/user/login`,
+      user
+    );
+    return employerCred;
+  }
 }

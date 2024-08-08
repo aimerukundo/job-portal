@@ -4,6 +4,7 @@ import { JobseekerRegistrationComponent } from './jobseeker-registration/jobseek
 import { EmployerRegistrationComponent } from './employer-registration/employer-registration.component';
 import { JobseekersLoginComponent } from './jobseekers-login/jobseekers-login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EmployerLoginComponent } from './employer-login/employer-login.component';
 
 
 const routes: Routes = [
@@ -22,8 +23,11 @@ const routes: Routes = [
   {
     path: 'jobseekers/confirm/profile',
     component: ProfileComponent
+  },
+  {
+    path: 'employers/login',
+    component: EmployerLoginComponent
   }
-  
 ];
 
 @NgModule({

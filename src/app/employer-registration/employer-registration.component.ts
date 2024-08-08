@@ -46,20 +46,24 @@ export class EmployerRegistrationComponent {
     return this.signupForm.get('password');
   }
 
-
   public signUpEmployer() {
-    this.auth.createEmployer({
-      companyName: this.signupForm.value.companyName as string,
-      contactName: this.signupForm.value.contactName as string,
-      businessEmail: this.signupForm.value.businessEmail as string,
-      password: this.signupForm.value.password as string,
-    }).subscribe({
-      next: () => {
-        this.toastr.success('successfully signup');
-      },
-      error: () => {
-        this.toastr.error('something went wrong');
-      },
-    })
+    this.auth
+      .createEmployer({
+        companyName: this.signupForm.value.companyName as string,
+        contactName: this.signupForm.value.contactName as string,
+        businessEmail: this.signupForm.value.businessEmail as string,
+        password: this.signupForm.value.password as string,
+      })
+      .subscribe({
+        next: () => {
+          this.toastr.success('successfully signup');
+        },
+        error: () => {
+          this.toastr.error('something went wrong');
+        },
+        complete: () => {
+          this.signupForm.reset();
+        },
+      });
   }
 }
