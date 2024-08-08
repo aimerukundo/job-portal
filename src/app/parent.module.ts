@@ -13,9 +13,10 @@ import {
 import { EmployerRegistrationComponent } from './employer-registration/employer-registration.component';
 import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { JobseekersLoginComponent } from './jobseekers-login/jobseekers-login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
-  declarations: [JobseekerRegistrationComponent, EmployerRegistrationComponent, JobseekersLoginComponent],
+  declarations: [JobseekerRegistrationComponent, EmployerRegistrationComponent, JobseekersLoginComponent, ProfileComponent],
   imports: [
     CommonModule,
     RouterModule,
