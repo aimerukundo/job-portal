@@ -14,9 +14,16 @@ import { EmployerRegistrationComponent } from './employer-registration/employer-
 import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { JobseekersLoginComponent } from './jobseekers-login/jobseekers-login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { EmployerLoginComponent } from './employer-login/employer-login.component';
 
 @NgModule({
-  declarations: [JobseekerRegistrationComponent, EmployerRegistrationComponent, JobseekersLoginComponent, ProfileComponent],
+  declarations: [
+    JobseekerRegistrationComponent,
+    EmployerRegistrationComponent,
+    JobseekersLoginComponent,
+    ProfileComponent,
+    EmployerLoginComponent,
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -24,7 +31,7 @@ import { ProfileComponent } from './profile/profile.component';
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
-  exports: [JobseekerRegistrationComponent, EmployerRegistrationComponent],
+  exports: [JobseekerRegistrationComponent, EmployerRegistrationComponent, EmployerLoginComponent],
   providers: [
     provideHttpClient(withInterceptors([authInterceptorInterceptor])),
   ],

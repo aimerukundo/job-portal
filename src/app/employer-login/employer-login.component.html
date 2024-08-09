@@ -4,11 +4,11 @@
       <div class="card-content">
         <div class="">
           <h1 class="font-xxl font-semibold text-light-blue mb-1">
-            Jobseekers
+            Employeers
           </h1>
-          <p class="mb-1">Log in to your Jobseeker Account</p>
+          <p class="mb-1">Log in to your Employer Account</p>
           <div class="form-container">
-            <form [formGroup]="loginForm" (ngSubmit)="loginJobseeker()">
+            <form [formGroup]="loginForm" (ngSubmit)="loginEmployer()">
               <div class="input-group mt-2">
                 <div class="col-12-xs col-12-md col-12-xl">
                   <label for="email" class="font-md">Email</label>
@@ -18,11 +18,11 @@
                     class="input"
                     formControlName="email"
                     [ngClass]="{
-                              'border-red':
-                                email?.invalid &&
-                                email?.touched &&
-                                email?.errors?.['required']
-                            }"
+                                'border-red':
+                                  email?.invalid &&
+                                  email?.touched &&
+                                  email?.errors?.['required']
+                              }"
                   />
                   <p
                     *ngIf="email?.invalid && email?.touched && email?.errors?.['required']"
@@ -39,11 +39,11 @@
                     class="input"
                     formControlName="password"
                     [ngClass]="{
-                              'border-red':
-                                password?.invalid &&
-                                password?.touched &&
-                                password?.errors?.['required']
-                            }"
+                                'border-red':
+                                  password?.invalid &&
+                                  password?.touched &&
+                                  password?.errors?.['required']
+                              }"
                   />
                   <p
                     *ngIf="password?.invalid && password?.touched && password?.errors?.['required']"
@@ -62,20 +62,18 @@
           </div>
         </div>
         <div class="card-content-secondary col-6-xl">
-          <p class="p-text">
-            Apply for jobs based on your skills and interests
-          </p>
+          <p class="p-text">Post unlimited jobs for free.</p>
           <img
-            src="../../assets/candidate-searching.svg"
-            alt="candidate-job"
+            src="../../assets/post-unlimited-jobs-for-free.svg.svg"
+            alt="post job"
             width="300"
           />
           <p class="p-text mt-1">
-            Looking for a Job? Find a job according to your profile
+            Download unlimited CVs of the applicants to your jobs.
           </p>
           <img
-            src="../../assets/candidate-submitting-cv.svg"
-            alt="candidate-cv"
+            src="../../assets/recruiter-welcoming-in-a-job-interview.svg.svg"
+            alt="recruiter welcome"
             width="300"
           />
         </div>
@@ -88,12 +86,12 @@
     </h1>
     <button
       class="btn-outlined-blue btn-card-2"
-      [routerLink]="['/jobseekers/signup']"
+      [routerLink]="['/employers/signup']"
     >
       REGISTER HERE
     </button>
 
-    <h1 class="font-normal font-xl card-2-title">Are you an Employer?</h1>
-    <button class="btn-outlined-blue btn-card-2" [routerLink]="['/employers/login']">LOGIN HERE</button>
+    <h1 class="font-normal font-xl card-2-title">Are you a Jobseeker</h1>
+    <button class="btn-outlined-blue btn-card-2" [routerLink]="['/jobseekers/login']">LOGIN HERE</button>
   </div>
 </div>
