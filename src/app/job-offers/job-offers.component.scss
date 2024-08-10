@@ -1,0 +1,28 @@
+@use "sass:math";
+@import "../app.component.scss";
+
+.job-offers-card {
+  margin: 40px auto;
+}
+
+.job-offer-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.time-posted-badge {
+  background-color: lighten($secondary, 40);
+  border-radius: $base-border-radius * 8;
+  width: 100px;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.job-offer-details {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  gap: 5px;
+}

@@ -5,12 +5,12 @@ import { EmployerRegistrationComponent } from './employer-registration/employer-
 import { JobseekersLoginComponent } from './jobseekers-login/jobseekers-login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EmployerLoginComponent } from './employer-login/employer-login.component';
-
+import { JobOffersComponent } from './job-offers/job-offers.component';
 
 const routes: Routes = [
   {
     path: 'jobseekers/login',
-    component: JobseekersLoginComponent
+    component: JobseekersLoginComponent,
   },
   {
     path: 'jobseekers/signup',
@@ -22,12 +22,16 @@ const routes: Routes = [
   },
   {
     path: 'jobseekers/confirm/profile',
-    component: ProfileComponent
+    component: ProfileComponent,
   },
   {
     path: 'employers/login',
-    component: EmployerLoginComponent
-  }
+    component: EmployerLoginComponent,
+  },
+  {
+    path: 'job-offers',
+    component: JobOffersComponent,
+  },
 ];
 
 @NgModule({
