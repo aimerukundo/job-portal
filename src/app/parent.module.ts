@@ -15,6 +15,8 @@ import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { JobseekersLoginComponent } from './jobseekers-login/jobseekers-login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { EmployerLoginComponent } from './employer-login/employer-login.component';
+import { JobOffersComponent } from './job-offers/job-offers.component';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 
 @NgModule({
   declarations: [
@@ -23,11 +25,20 @@ import { EmployerLoginComponent } from './employer-login/employer-login.componen
     JobseekersLoginComponent,
     ProfileComponent,
     EmployerLoginComponent,
+    JobOffersComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    NgxSkeletonLoaderModule.forRoot({
+      theme: {
+        extendsFromRoot: true,
+        height: '300px',
+        width: '100%',
+        marginTop: '20px',
+      }
+    }),
     HttpClientModule,
     ToastrModule.forRoot(),
   ],
