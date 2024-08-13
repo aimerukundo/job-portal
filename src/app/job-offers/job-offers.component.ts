@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobOfferService } from '../services/job-offer.service';
 import { JobOffersResponse } from '../models/job.model';
+import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-job-offers',
@@ -14,11 +15,10 @@ export class JobOffersComponent implements OnInit {
   ngOnInit(): void {
     this.jobOfferService.getJobOffers().subscribe({
       next: (data) => {
-        console.log(data);
         this.jobs = data as JobOffersResponse;
       },
       error: (error) => {
-        console.log('something went wrong:', error);
+        catchError(error);
       },
     });
   }
