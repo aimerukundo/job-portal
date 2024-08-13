@@ -80,7 +80,7 @@
             </div>
             <div class="col-12-xs col-8-md col-6-xl">
               <label for="dateOfBirth" class="font-md">Date of Birth</label>
-              <input type="date" class="input" />
+              <input type="date" class="input" formControlName="dateOfBirth" />
               <p
                 *ngIf="dateOfBirth?.invalid &&
                     dateOfBirth?.touched && dateOfBirth?.errors?.['required']"
@@ -142,7 +142,9 @@
           </div>
           <div class="input-group">
             <div class="col-12-xs col-8-md col-6-xl">
-              <label for="salary" class="font-md">Monthly Salary Expectation</label>
+              <label for="salary" class="font-md"
+                >Monthly Salary Expectation</label
+              >
               <input
                 id="salary"
                 type="number"
@@ -169,7 +171,9 @@
                 id="resume"
                 type="file"
                 class="input-file"
-                formControlName="lastName"
+                formControlName="resume"
+                accept="application/pdf"
+                (change)="handleFileUpload($event)"
                 [ngClass]="{
                     'border-red':
                       resume?.invalid &&

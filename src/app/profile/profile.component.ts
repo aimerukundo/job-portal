@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { REQUIRED_FIELD } from '../../constants/constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -9,8 +11,10 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class ProfileComponent {
   required = '';
-
-  constructor() {
+  file: File | null = null;
+  fileContent: string | ArrayBuffer | null | undefined = null;
+  resumeUrl = '';
+  constructor(private toastr: ToastrService, private router: Router) {
     this.required = REQUIRED_FIELD;
   }
   profileForm = new FormGroup({
@@ -62,5 +66,38 @@ export class ProfileComponent {
     return this.profileForm.get('resume');
   }
 
-  public updateProfile() {}
+  public updateProfile() {
+    const profileData = { ...this.profileForm.value, resume: this.resumeUrl };
+
+    localStorage.setItem('profile', JSON.stringify(profileData));
+    this.profileForm.reset();
+    this.toastr.success('profile updated successfully');
+
+    this.router.navigate(['/job-offers']);
+  }
+
+  public handleFileUpload(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    if (input.files && input.files.length > 0) {
+      this.file = input.files[0];
+
+      const reader = new FileReader();
+
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        this.fileContent = e.target?.result;
+      };
+
+      reader.readAsDataURL(this.file);
+    }
+
+    const fileData = {
+      name: this.file?.name,
+      type: this.file?.type,
+      content: this.fileContent,
+    };
+
+    const resume = JSON.stringify(fileData);
+    this.resumeUrl = resume;
+  }
 }
