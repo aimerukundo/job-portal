@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { REQUIRED_FIELD } from '../../constants/constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jobseeker-registration',
@@ -11,7 +12,11 @@ import { REQUIRED_FIELD } from '../../constants/constants';
 })
 export class JobseekerRegistrationComponent {
   required = '';
-  constructor(private auth: AuthService, private toastr: ToastrService) {
+  constructor(
+    private auth: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     this.required = REQUIRED_FIELD;
   }
   signupForm = new FormGroup({
@@ -55,17 +60,17 @@ export class JobseekerRegistrationComponent {
         password: this.signupForm.value.password as string,
       })
       .subscribe({
-        next: () => {
+        next: (data) => {
           this.toastr.success('successfully signup');
+          localStorage.setItem('user', JSON.stringify(data));
+          this.router.navigate(['/jobseekers/confirm/profile']);
         },
         error: () => {
           this.toastr.error('something went wrong');
         },
         complete: () => {
           this.signupForm.reset();
-        }
+        },
       });
-
-    
   }
 }

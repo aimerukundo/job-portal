@@ -1,16 +1,13 @@
 export interface Job {
   id: string;
   title: string;
-  company_name: string;
+  company: string;
   location: string;
-  employment_type: string;
-  employment_hour_type: string;
-  application_url: string;
-  html_description: string;
-  plain_text_description: string;
-  publication_time: string;
-  salary: Salary;
-  source: string;
+  type: string;
+  description: string;
+  datePosted: string;
+  salary: number;
+  salaryCurrency: string;
 }
 
 export interface Salary {

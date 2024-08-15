@@ -18,9 +18,10 @@ export class AuthService {
       password: jobSeekerData.password,
     };
 
+    this.httpClient.post(`${environment.APIURL}/user/signup`, user).subscribe();
     const jobSeekerCred = this.httpClient.post(
-      `${environment.APIURL}/user/signup`,
-      user
+      `${environment.BACKENDURL}/api/register`,
+      jobSeekerData
     );
     return jobSeekerCred;
   }

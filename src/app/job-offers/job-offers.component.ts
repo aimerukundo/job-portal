@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JobOfferService } from '../services/job-offer.service';
-import { JobOffersResponse } from '../models/job.model';
+import { Job } from '../models/job.model';
 import { catchError } from 'rxjs';
 
 @Component({
@@ -9,13 +9,13 @@ import { catchError } from 'rxjs';
   styleUrl: './job-offers.component.scss',
 })
 export class JobOffersComponent implements OnInit {
-  jobs: JobOffersResponse | null = null;
+  jobs: Job[] | null = null;
   constructor(private jobOfferService: JobOfferService) {}
 
   ngOnInit(): void {
     this.jobOfferService.getJobOffers().subscribe({
       next: (data) => {
-        this.jobs = data as JobOffersResponse;
+        this.jobs = data as Job[];
       },
       error: (error) => {
         catchError(error);
