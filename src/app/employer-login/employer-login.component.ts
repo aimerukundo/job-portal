@@ -3,6 +3,7 @@ import { REQUIRED_FIELD } from '../../constants/constants';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-employer-login',
@@ -10,8 +11,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './employer-login.component.scss'
 })
 export class EmployerLoginComponent {
-  required = '';
-
+  public required = '';
+  private loginSubscription: Subscription | null = null;
   constructor(private auth: AuthService, private toastr: ToastrService) {
     this.required = REQUIRED_FIELD;
   }
@@ -33,7 +34,7 @@ export class EmployerLoginComponent {
   }
 
   public loginEmployer() {
-    this.auth
+    this.loginSubscription = this.auth
       .loginEmployer({
         businessEmail: this.loginForm.value.email as string,
         password: this.loginForm.value.password as string,
@@ -50,5 +51,11 @@ export class EmployerLoginComponent {
           this.loginForm.reset();
         }
       });
+  }
+
+  ngOnDestroy() {
+    if (this.loginSubscription) {
+      this.loginSubscription.unsubscribe();
+    }
   }
 }

@@ -3,14 +3,16 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { REQUIRED_FIELD } from '../../constants/constants';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-jobseekers-login',
   templateUrl: './jobseekers-login.component.html',
-  styleUrl: './jobseekers-login.component.scss',
+  styleUrl: './jobseekers-login.component.scss'
 })
 export class JobseekersLoginComponent {
-  required = '';
+  public required = '';
+  private loginSubscription: Subscription | null = null;
   constructor(private auth: AuthService, private toastr: ToastrService) {
     this.required = REQUIRED_FIELD;
   }
@@ -19,8 +21,8 @@ export class JobseekersLoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
-    ]),
+      Validators.minLength(8)
+    ])
   });
 
   get email() {
@@ -32,10 +34,10 @@ export class JobseekersLoginComponent {
   }
 
   public loginJobseeker() {
-    this.auth
+    this.loginSubscription = this.auth
       .loginJobSeeker({
         email: this.loginForm.value.email as string,
-        password: this.loginForm.value.password as string,
+        password: this.loginForm.value.password as string
       })
       .subscribe({
         next: (jobSeekerData) => {
@@ -47,7 +49,13 @@ export class JobseekersLoginComponent {
         },
         complete: () => {
           this.loginForm.reset();
-        },
+        }
       });
+  }
+
+  ngOnDestroy() {
+    if (this.loginSubscription) {
+      this.loginSubscription.unsubscribe();
+    }
   }
 }

@@ -3,13 +3,15 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { REQUIRED_FIELD } from '../../constants/constants';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-employer-registration',
   templateUrl: './employer-registration.component.html',
-  styleUrl: './employer-registration.component.scss',
+  styleUrl: './employer-registration.component.scss'
 })
 export class EmployerRegistrationComponent {
-  required = '';
+  public required = '';
+  private signupSubscription: Subscription | null = null;
   constructor(private auth: AuthService, private toastr: ToastrService) {
     this.required = REQUIRED_FIELD;
   }
@@ -17,17 +19,17 @@ export class EmployerRegistrationComponent {
   signupForm = new FormGroup({
     companyName: new FormControl('', [
       Validators.required,
-      Validators.minLength(4),
+      Validators.minLength(4)
     ]),
     contactName: new FormControl('', [
       Validators.required,
-      Validators.minLength(4),
+      Validators.minLength(4)
     ]),
     businessEmail: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
-    ]),
+      Validators.minLength(8)
+    ])
   });
 
   get companyName() {
@@ -47,12 +49,12 @@ export class EmployerRegistrationComponent {
   }
 
   public signUpEmployer() {
-    this.auth
+    this.signupSubscription = this.auth
       .createEmployer({
         companyName: this.signupForm.value.companyName as string,
         contactName: this.signupForm.value.contactName as string,
         businessEmail: this.signupForm.value.businessEmail as string,
-        password: this.signupForm.value.password as string,
+        password: this.signupForm.value.password as string
       })
       .subscribe({
         next: () => {
@@ -63,7 +65,13 @@ export class EmployerRegistrationComponent {
         },
         complete: () => {
           this.signupForm.reset();
-        },
+        }
       });
+  }
+
+  ngOnDestroy() {
+    if (this.signupSubscription) {
+      this.signupSubscription.unsubscribe();
+    }
   }
 }
