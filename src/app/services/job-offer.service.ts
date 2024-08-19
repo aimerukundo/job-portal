@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
+import { Job } from '../models/job.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,7 +10,7 @@ import { environment } from '../../../environments/environment.development';
 export class JobOfferService {
   constructor(private httpClient: HttpClient) {}
 
-  getJobOffers() {
-    return this.httpClient.get(`${environment.BACKENDURL}/api/jobs`);
+  getJobOffers(): Observable<Job[]> {
+    return this.httpClient.get<Job[]>(`${environment.BACKENDURL}/api/jobs`);
   }
 }

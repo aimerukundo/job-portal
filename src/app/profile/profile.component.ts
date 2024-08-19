@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { IUser } from '../models/user.model';
+import { catchError, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-profile',
@@ -13,10 +14,11 @@ import { IUser } from '../models/user.model';
 })
 export class ProfileComponent implements OnInit {
   required = '';
-  file: File | null = null;
-  fileContent: string | ArrayBuffer | null | undefined = null;
-  resumeUrl = '';
-  user: IUser | null = null;
+  private file: File | null = null;
+  private fileContent: string | ArrayBuffer | null | undefined = null;
+  private resumeUrl = '';
+  private user: IUser | null = null;
+  userSubscription: Subscription | null = null;
 
   constructor(
     private toastr: ToastrService,
@@ -87,7 +89,7 @@ export class ProfileComponent implements OnInit {
   public updateProfile() {
     const profileData = { ...this.profileForm.value, resume: this.resumeUrl };
 
-    this.userService
+    this.userSubscription = this.userService
       .updateJobseeker(this.user?._id as string, {
         firstName: profileData.firstName as string,
         lastName: profileData.lastName as string,
@@ -98,13 +100,20 @@ export class ProfileComponent implements OnInit {
         monthlySalary: profileData.salary as string,
         resume: profileData.resume as string,
       })
-      .subscribe();
-
-    // localStorage.setItem('profile', JSON.stringify(profileData));
-    this.profileForm.reset();
-    this.toastr.success('profile updated successfully');
-
-    this.router.navigate(['/job-offers']);
+      .subscribe({
+        next: (data) => {
+          localStorage.setItem('user', JSON.stringify(data));
+          this.toastr.success('profile updated successfully');
+          this.router.navigate(['/job-offers']);
+        },
+        error: (error) => {
+          catchError(error);
+          this.toastr.error(`something went wrong! ${error}`);
+        },
+        complete: () => {
+          this.profileForm.reset();
+        },
+      });
   }
 
   public handleFileUpload(event: Event) {
@@ -130,5 +139,11 @@ export class ProfileComponent implements OnInit {
 
     const resume = JSON.stringify(fileData);
     this.resumeUrl = resume;
+  }
+
+  ngOnDestroy(): void {
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
   }
 }

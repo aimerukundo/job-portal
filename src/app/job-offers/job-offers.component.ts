@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { JobOfferService } from '../services/job-offer.service';
 import { Job } from '../models/job.model';
-import { catchError } from 'rxjs';
+import { catchError, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-job-offers',
@@ -9,17 +9,24 @@ import { catchError } from 'rxjs';
   styleUrl: './job-offers.component.scss',
 })
 export class JobOffersComponent implements OnInit {
-  jobs: Job[] | null = null;
+  public jobs: Job[] | null = null;
+  private jobSubscription: Subscription | null = null;
   constructor(private jobOfferService: JobOfferService) {}
 
   ngOnInit(): void {
     this.jobOfferService.getJobOffers().subscribe({
       next: (data) => {
-        this.jobs = data as Job[];
+        this.jobs = data;
       },
       error: (error) => {
         catchError(error);
       },
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.jobSubscription) {
+      this.jobSubscription.unsubscribe();
+    }
   }
 }
