@@ -3,4 +3,5 @@ export interface IJobSeeker {
     lastName: string;
     email: string;
     password: string;
+    role: string;
 }

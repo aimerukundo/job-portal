@@ -59,7 +59,8 @@ export class JobseekerRegistrationComponent {
         firstName: this.signupForm.value.firstName as string,
         lastName: this.signupForm.value.lastName as string,
         email: this.signupForm.value.email as string,
-        password: this.signupForm.value.password as string
+        password: this.signupForm.value.password as string,
+        role: 'jobseeker'
       })
       .subscribe({
         next: (data) => {
