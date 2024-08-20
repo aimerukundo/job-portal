@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { JobOfferService } from '../services/job-offer.service';
 import { Job } from '../models/job.model';
-import { catchError, Subscription } from 'rxjs';
+import { catchError, of, Subscription, switchMap } from 'rxjs';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-job-offers',
@@ -13,17 +15,51 @@ export class JobOffersComponent implements OnInit {
   private jobSubscription: Subscription | null = null;
   public search = '';
   public region = '';
-  constructor(private jobOfferService: JobOfferService) {}
+  constructor(
+    private jobOfferService: JobOfferService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.jobOfferService.getJobOffers().subscribe({
-      next: (data) => {
-        this.jobs = data;
-      },
-      error: (error) => {
-        catchError(error);
-      }
-    });
+    this.authService
+      .validateToken()
+      .pipe(
+        switchMap(() => this.jobOfferService.getJobOffers()),
+        catchError((error) => {
+          if (error.status === 401) {
+            this.authService.logOut();
+            this.router.navigate(['/jobseekers/login']);
+          }
+          return of([]);
+        })
+      )
+      .subscribe({
+        next: (data) => {
+          this.jobs = data;
+        },
+        error: (error) => {
+          catchError(error);
+        }
+      });
+
+    // this.authService.validateToken().subscribe({
+    //   next: (data) => {
+    //     console.log(data)
+    //   },
+    //   error: (error) => {
+    //     catchError(error);
+
+    //   }
+    // })
+    // this.jobOfferService.getJobOffers().subscribe({
+    //   next: (data) => {
+    //     this.jobs = data;
+    //   },
+    //   error: (error) => {
+    //     catchError(error);
+    //   }
+    // });
   }
 
   ngOnDestroy(): void {
