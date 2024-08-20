@@ -64,10 +64,22 @@ export class AuthService {
         }
       }
     };
-    const employerCred = this.httpClient.post(
+
+    const employer = {
+      firstName: employerData.companyName,
+      lastName: employerData.contactName,
+      email: employerData.businessEmail,
+      password: employerData.password,
+      role: 'employer'
+    }
+    this.httpClient.post(
       `${environment.APIURL}/user/signup`,
       user
-    );
+    ).subscribe();
+    const employerCred = this.httpClient.post(
+      `${environment.BACKENDURL}/api/register`,
+      employer
+    )
     return employerCred;
   }
 

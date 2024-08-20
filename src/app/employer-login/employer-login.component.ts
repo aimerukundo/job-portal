@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-employer-login',
@@ -13,7 +14,11 @@ import { Subscription } from 'rxjs';
 export class EmployerLoginComponent {
   public required = '';
   private loginSubscription: Subscription | null = null;
-  constructor(private auth: AuthService, private toastr: ToastrService) {
+  constructor(
+    private auth: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     this.required = REQUIRED_FIELD;
   }
 
@@ -21,8 +26,8 @@ export class EmployerLoginComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
       Validators.required,
-      Validators.minLength(8),
-    ]),
+      Validators.minLength(8)
+    ])
   });
 
   get email() {
@@ -37,12 +42,13 @@ export class EmployerLoginComponent {
     this.loginSubscription = this.auth
       .loginEmployer({
         businessEmail: this.loginForm.value.email as string,
-        password: this.loginForm.value.password as string,
+        password: this.loginForm.value.password as string
       })
       .subscribe({
         next: (employerData) => {
           this.toastr.success('successfully logged in');
           localStorage.setItem('employer', JSON.stringify(employerData));
+          this.router.navigate(['/employers/dashboard']);
         },
         error: () => {
           this.toastr.error('something went wrong');

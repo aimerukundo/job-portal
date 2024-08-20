@@ -6,41 +6,46 @@ import { JobseekersLoginComponent } from './jobseekers-login/jobseekers-login.co
 import { ProfileComponent } from './profile/profile.component';
 import { EmployerLoginComponent } from './employer-login/employer-login.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
+import { EmployerDashboardComponent } from './employer-dashboard/employer-dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'jobseekers/login',
-    pathMatch: 'full',
+    pathMatch: 'full'
   },
   {
     path: 'jobseekers/login',
-    component: JobseekersLoginComponent,
+    component: JobseekersLoginComponent
   },
   {
     path: 'jobseekers/signup',
-    component: JobseekerRegistrationComponent,
+    component: JobseekerRegistrationComponent
   },
   {
     path: 'employers/signup',
-    component: EmployerRegistrationComponent,
+    component: EmployerRegistrationComponent
   },
   {
     path: 'jobseekers/confirm/profile',
-    component: ProfileComponent,
+    component: ProfileComponent
   },
   {
     path: 'employers/login',
-    component: EmployerLoginComponent,
+    component: EmployerLoginComponent
   },
   {
     path: 'job-offers',
-    component: JobOffersComponent,
+    component: JobOffersComponent
   },
+  {
+    path: 'employers/dashboard',
+    component: EmployerDashboardComponent
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}

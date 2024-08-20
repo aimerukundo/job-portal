@@ -3,7 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { REQUIRED_FIELD } from '../../constants/constants';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { Subscription } from 'rxjs';
+import { catchError, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-employer-registration',
   templateUrl: './employer-registration.component.html',
@@ -12,7 +13,11 @@ import { Subscription } from 'rxjs';
 export class EmployerRegistrationComponent {
   public required = '';
   private signupSubscription: Subscription | null = null;
-  constructor(private auth: AuthService, private toastr: ToastrService) {
+  constructor(
+    private auth: AuthService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
     this.required = REQUIRED_FIELD;
   }
 
@@ -57,10 +62,14 @@ export class EmployerRegistrationComponent {
         password: this.signupForm.value.password as string
       })
       .subscribe({
-        next: () => {
+        next: (data) => {
+          console.log(data);
+          localStorage.setItem('company', JSON.stringify(data));
+          this.router.navigate(['/login']);
           this.toastr.success('successfully signup');
         },
-        error: () => {
+        error: (error) => {
+          catchError(error);
           this.toastr.error('something went wrong');
         },
         complete: () => {
