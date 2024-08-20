@@ -9,6 +9,11 @@ import { JobOffersComponent } from './job-offers/job-offers.component';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'jobseekers/login',
+    pathMatch: 'full',
+  },
+  {
     path: 'jobseekers/login',
     component: JobseekersLoginComponent,
   },
