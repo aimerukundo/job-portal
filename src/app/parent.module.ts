@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { JobseekerRegistrationComponent } from './jobseeker-registration/jobseeker-registration.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import {
   HttpClientModule,
@@ -31,6 +31,7 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
+    FormsModule,
     NgxSkeletonLoaderModule.forRoot({
       theme: {
         extendsFromRoot: true,

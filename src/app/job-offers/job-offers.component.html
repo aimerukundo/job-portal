@@ -1,31 +1,35 @@
 <div class="col-12-xs col-12-md col-12-xl col-12-xxl job-offers-container pb-2">
-  <div class="filter-container">
-    <div class="search-container col-4-xl">
-      <div class="search-img">
-        <img src="../../assets/search.svg" alt="search" width="20" />
+  <form action="" #searchForm="ngForm">
+    <div class="filter-container">
+      <div class="search-container col-4-xl">
+        <div class="search-img">
+          <img src="../../assets/search.svg" alt="search" width="20" />
+        </div>
+        <input
+          type="text"
+          name="search"
+          [(ngModel)]="search"
+          class="input-search"
+          placeholder="Job Title, Company or Keyword"
+        />
       </div>
-      <input
-        type="text"
-        name=""
-        id=""
-        class="input-search"
-        placeholder="Job Title, Company or Keyword"
-      />
-    </div>
-    <div class="search-container col-2-xl">
-      <div class="search-img ">
-        <img src="../../assets/map-pin.svg" alt="location" width="20" />
+      <div class="search-container col-2-xl">
+        <div class="search-img">
+          <img src="../../assets/map-pin.svg" alt="location" width="20" />
+        </div>
+        <select name="region" placeholder="Region" class="input-search" [(ngModel)]="region" value="region">
+          <option value="lagos">Lagos</option>
+          <option value="abuja">Abuja</option>
+        </select>
       </div>
-      <select name="" id="" class="input-search">
-        <option value="lagos">Lagos</option>
-        <option value="abuja">Abuja</option>
-      </select>
-    </div>
 
-    <div class="button btn-container">
-      <button type="submit" class="btn-primary font-semibold">Find jobs</button>
+      <div class="button btn-container">
+        <button type="submit" class="btn-primary font-semibold" (click)="onSearch()" >
+          Find jobs
+        </button>
+      </div>
     </div>
-  </div>
+  </form>
   <ngx-skeleton-loader count="5" class="col-7-xl col-7-md mt-2" *ngIf="!jobs" />
   <div
     *ngFor="let job of jobs"

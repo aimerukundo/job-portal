@@ -4,6 +4,7 @@ import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { REQUIRED_FIELD } from '../../constants/constants';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jobseekers-login',
@@ -13,7 +14,7 @@ import { Subscription } from 'rxjs';
 export class JobseekersLoginComponent {
   public required = '';
   private loginSubscription: Subscription | null = null;
-  constructor(private auth: AuthService, private toastr: ToastrService) {
+  constructor(private auth: AuthService, private toastr: ToastrService, private router: Router) {
     this.required = REQUIRED_FIELD;
   }
 
@@ -43,6 +44,7 @@ export class JobseekersLoginComponent {
         next: (jobSeekerData) => {
           this.toastr.success('successfully logged in');
           localStorage.setItem('jobSeeker', JSON.stringify(jobSeekerData));
+          this.router.navigate(['/job-offers']);
         },
         error: () => {
           this.toastr.error('something went wrong');
