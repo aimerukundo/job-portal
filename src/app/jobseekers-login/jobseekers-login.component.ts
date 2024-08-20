@@ -43,7 +43,8 @@ export class JobseekersLoginComponent {
       .subscribe({
         next: (jobSeekerData) => {
           this.toastr.success('successfully logged in');
-          localStorage.setItem('jobSeeker', JSON.stringify(jobSeekerData));
+          localStorage.setItem('login_token', JSON.stringify(jobSeekerData.login_token));
+          localStorage.setItem('refresh_token', JSON.stringify(jobSeekerData.refresh_token));
           this.router.navigate(['/job-offers']);
         },
         error: () => {

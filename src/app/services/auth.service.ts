@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { IJobSeeker } from '../models/jobSeeker.model';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../environments/environment.development';
 import { IEmployer } from '../models/employer.model';
+import { ILoginResponse } from '../models/auth.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthService {
   constructor(private httpClient: HttpClient) {}
@@ -15,7 +17,7 @@ export class AuthService {
       first_name: jobSeekerData.firstName,
       last_name: jobSeekerData.lastName,
       email: jobSeekerData.email,
-      password: jobSeekerData.password,
+      password: jobSeekerData.password
     };
 
     this.httpClient.post(`${environment.APIURL}/user/signup`, user).subscribe();
@@ -26,12 +28,14 @@ export class AuthService {
     return jobSeekerCred;
   }
 
-  public loginJobSeeker(jobSeekerData: Partial<IJobSeeker>) {
+  public loginJobSeeker(
+    jobSeekerData: Partial<IJobSeeker>
+  ): Observable<ILoginResponse> {
     const user = {
       email: jobSeekerData.email,
-      password: jobSeekerData.password,
+      password: jobSeekerData.password
     };
-    const jobSeekerCred = this.httpClient.post(
+    const jobSeekerCred = this.httpClient.post<ILoginResponse>(
       `${environment.APIURL}/user/login`,
       user
     );
@@ -56,9 +60,9 @@ export class AuthService {
           state: 'Anystate',
           postal_code: '12345',
           country: 'Countryland',
-          roles: ['employer'],
-        },
-      },
+          roles: ['employer']
+        }
+      }
     };
     const employerCred = this.httpClient.post(
       `${environment.APIURL}/user/signup`,
@@ -70,12 +74,25 @@ export class AuthService {
   public loginEmployer(employerData: Partial<IEmployer>) {
     const user = {
       email: employerData.businessEmail,
-      password: employerData.password,
+      password: employerData.password
     };
     const employerCred = this.httpClient.post(
       `${environment.APIURL}/user/login`,
       user
     );
     return employerCred;
+  }
+
+  public validateToken() {
+    const token = JSON.parse(localStorage.getItem('login_token') as string);
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.httpClient.get<string>(`${environment.APIURL}/user/validate`, {
+      headers
+    });
+  }
+
+  public logOut() {
+    localStorage.removeItem('login_token');
+    localStorage.removeItem('refresh_token');
   }
 }
