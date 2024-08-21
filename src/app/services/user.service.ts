@@ -14,6 +14,9 @@ export class UserService {
     return this.httpClient.get<IUser>(`${environment.BACKENDURL}/api/user/${id}`);
   }
 
+  public getEmployer(id: string): Observable<IUser> {
+    return this.httpClient.get<IUser>(`${environment.BACKENDURL}/api/user/${id}`);
+  }
   public updateJobseeker(id: string, jobSeekerData: IUser): Observable<IUser> {
     return this.httpClient.patch<IUser>(
       `${environment.BACKENDURL}/api/user/${id}`,

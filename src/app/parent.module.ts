@@ -17,6 +17,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EmployerLoginComponent } from './employer-login/employer-login.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+import { EmployerDashboardComponent } from './employer-dashboard/employer-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
     JobseekersLoginComponent,
     ProfileComponent,
     EmployerLoginComponent,
-    JobOffersComponent
+    JobOffersComponent,
+    EmployerDashboardComponent
   ],
   imports: [
     CommonModule,

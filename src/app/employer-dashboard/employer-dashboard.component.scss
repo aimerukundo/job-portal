@@ -1,0 +1,75 @@
+@import "../app.component.scss";
+
+.employer-dashboard-title {
+  color: #064780;
+  margin-top: 20px;
+  span {
+    color: $primary;
+  }
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+
+  p {
+    color: lighten(gray, 1);
+    span {
+      color: black;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0;
+  box-shadow: $base-box-shadow;
+
+  border-bottom-left-radius: $base-border-radius * 2;
+  border-bottom-right-radius: $base-border-radius * 2;
+  min-height: 250px;
+  .card-title {
+    font-size: $base-font-size;
+    padding-bottom: $base-padding;
+    font-weight: bold;
+  }
+  .card-body {
+    font-size: $base-font-size;
+
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.card-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card-details {
+  text-align: center;
+  h2 {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: $secondary;
+    color: white;
+  }
+
+  cursor: pointer;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.post-now {
+  padding: 10px;
+  background-color: lighten(gray, 30);
+}
