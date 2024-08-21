@@ -8,7 +8,7 @@ A comprehensive job portal application built with Angular, designed to help user
 The Job Portal is a web application built using Angular that connects job seekers with employers. Job seekers can browse job listings, apply for jobs, and manage their profiles, while employers can post job openings, manage applications, and search for potential candidates.
 
 ## Demo
-Check out the live demo of the Job Portal [here](https://job-portal-eta-three.vercel.app/jobseekers/login)
+Check out the live demo of the Job Portal [here](https://job-portal-eta-three.vercel.app)
 
 ## Installation
 Follow these steps to set up the project locally:
