@@ -53,7 +53,6 @@ To configure the application, you may need to set up the following environment v
 These can be set in the src/environments/environment.ts file:
 
 ```
-
 export const environemnt = {
   production: false,
   APN: '',
@@ -62,7 +61,6 @@ export const environemnt = {
   RAPIDAPIHOST: '',
   BACKENDURL: '',
 };
-
 ```
 
 ## Contributing
