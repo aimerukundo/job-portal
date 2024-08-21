@@ -19,26 +19,20 @@ Follow these steps to set up the project locally:
 
 ### Clone the Repository
 ```
-
 git clone https://github.com/aimerukundo/job-portal.git
 cd job-portal
-
 ```
 
 ### Install Dependencies
 
 ```
-
 npm install
-
 ```
 
 ### Run the Application
 
 ```
-
 npm start
-
 ```
 
 ## Configuration
