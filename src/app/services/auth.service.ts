@@ -22,7 +22,7 @@ export class AuthService {
 
     this.httpClient.post(`${environment.APIURL}/user/signup`, user).subscribe();
     const jobSeekerCred = this.httpClient.post(
-      `${environment.BACKENDURL}/api/register`,
+      `${environment.BACKENDURL}/api/user`,
       jobSeekerData
     );
     return jobSeekerCred;
@@ -77,7 +77,7 @@ export class AuthService {
       user
     ).subscribe();
     const employerCred = this.httpClient.post(
-      `${environment.BACKENDURL}/api/register`,
+      `${environment.BACKENDURL}/api/user`,
       employer
     )
     return employerCred;
