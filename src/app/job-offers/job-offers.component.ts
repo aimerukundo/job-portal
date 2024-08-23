@@ -42,24 +42,6 @@ export class JobOffersComponent implements OnInit {
           catchError(error);
         }
       });
-
-    // this.authService.validateToken().subscribe({
-    //   next: (data) => {
-    //     console.log(data)
-    //   },
-    //   error: (error) => {
-    //     catchError(error);
-
-    //   }
-    // })
-    // this.jobOfferService.getJobOffers().subscribe({
-    //   next: (data) => {
-    //     this.jobs = data;
-    //   },
-    //   error: (error) => {
-    //     catchError(error);
-    //   }
-    // });
   }
 
   ngOnDestroy(): void {

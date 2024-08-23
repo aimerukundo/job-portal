@@ -4,5 +4,5 @@ export const environment = {
   APIURL: 'https://go-auth-v1.onrender.com',
   RAPIDAPIKEY: 'ce90e94adbmshf884d2861ec4857p13aaa3jsn9814679e7559',
   RAPIDAPIHOST: 'job-search-api1.p.rapidapi.com',
-  BACKENDURL: 'http://localhost:3000',
+  BACKENDURL: 'https://job-portal-api-azure.vercel.app'
 };

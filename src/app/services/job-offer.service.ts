@@ -11,6 +11,6 @@ export class JobOfferService {
   constructor(private httpClient: HttpClient) {}
 
   getJobOffers(): Observable<Job[]> {
-    return this.httpClient.get<Job[]>(`${environment.BACKENDURL}/api/jobs`);
+    return this.httpClient.get<Job[]>(`${environment.BACKENDURL}/api/job`);
   }
 }
