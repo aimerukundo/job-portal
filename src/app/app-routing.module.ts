@@ -7,6 +7,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { EmployerLoginComponent } from './employer-login/employer-login.component';
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { EmployerDashboardComponent } from './employer-dashboard/employer-dashboard.component';
+import { EmployerJobPostComponent } from './employer-job-post/employer-job-post.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'employers/dashboard',
     component: EmployerDashboardComponent
+  },
+  {
+    path: 'employers/jobs/add',
+    component: EmployerJobPostComponent
   }
 ];
 

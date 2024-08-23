@@ -1,0 +1,16 @@
+@import "../app.component.scss";
+
+.employer-job-post-title {
+    color: #064780;
+    margin-top: 20px;
+    text-align: center;
+    
+    span {
+        color: $primary;
+    }
+}
+
+.input-group {
+    display: flex;
+    gap: 20px;
+  }
