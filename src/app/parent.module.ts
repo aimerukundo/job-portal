@@ -7,7 +7,7 @@ import { ToastrModule } from 'ngx-toastr';
 import {
   HttpClientModule,
   provideHttpClient,
-  withInterceptors,
+  withInterceptors
 } from '@angular/common/http';
 
 import { EmployerRegistrationComponent } from './employer-registration/employer-registration.component';
@@ -18,6 +18,7 @@ import { EmployerLoginComponent } from './employer-login/employer-login.componen
 import { JobOffersComponent } from './job-offers/job-offers.component';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
 import { EmployerDashboardComponent } from './employer-dashboard/employer-dashboard.component';
+import { EmployerJobPostComponent } from './employer-job-post/employer-job-post.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EmployerDashboardComponent } from './employer-dashboard/employer-dashbo
     ProfileComponent,
     EmployerLoginComponent,
     JobOffersComponent,
-    EmployerDashboardComponent
+    EmployerDashboardComponent,
+    EmployerJobPostComponent
   ],
   imports: [
     CommonModule,
@@ -39,15 +41,17 @@ import { EmployerDashboardComponent } from './employer-dashboard/employer-dashbo
         extendsFromRoot: true,
         height: '300px',
         width: '100%',
-        marginTop: '20px',
+        marginTop: '20px'
       }
     }),
     HttpClientModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
-  exports: [JobseekerRegistrationComponent, EmployerRegistrationComponent, EmployerLoginComponent],
-  providers: [
-    provideHttpClient(withInterceptors([authInterceptorInterceptor])),
+  exports: [
+    JobseekerRegistrationComponent,
+    EmployerRegistrationComponent,
+    EmployerLoginComponent
   ],
+  providers: [provideHttpClient(withInterceptors([authInterceptorInterceptor]))]
 })
 export class ParentModule {}

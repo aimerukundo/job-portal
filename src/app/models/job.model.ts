@@ -10,6 +10,16 @@ export interface Job {
   salaryCurrency: string;
 }
 
+export interface JobPost {
+  title: string;
+  description: string;
+  location: string;
+  type: string;
+  experience: string;
+  salary: string;
+  company: string;
+}
+
 export interface Salary {
   currency: string;
   min_salary: number;

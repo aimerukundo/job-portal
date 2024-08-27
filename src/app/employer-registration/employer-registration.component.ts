@@ -63,7 +63,6 @@ export class EmployerRegistrationComponent {
       })
       .subscribe({
         next: (data) => {
-          console.log(data);
           localStorage.setItem('company', JSON.stringify(data));
           this.router.navigate(['/login']);
           this.toastr.success('successfully signup');
