@@ -6,12 +6,25 @@
   </div>
 
   <div class="card col-12-xs col-12-md mt-2">
-    <h3 class="font-semibold font-md">Company: 100Devs</h3>
-    <div class="mt-2">
-      <form action="">
+    <h3 class="font-semibold font-md mb-2">Company: 100Devs</h3>
+    <div>
+      <form [formGroup]="jobForm" (ngSubmit)="postJob()">
         <div>
           <label for="">Job Title*</label>
-          <input type="text" name="" id="" class="input" />
+          <input
+            type="text"
+            name=""
+            id=""
+            class="input"
+            formControlName="title"
+            [ngClass]="{ 'border-red': title?.invalid && title?.touched && title?.errors?.['required'] }"
+          />
+          <p
+            *ngIf="title?.invalid && title?.touched && title?.errors?.['required']"
+            class="text-red font-sm"
+          >
+            {{ required }}
+          </p>
           <p class="font-normal font-nd">
             The title must be specific and accurately reflect the purpose and
             scope of the position. <br />
@@ -21,51 +34,99 @@
         </div>
         <div class="mt-2">
           <label for="">Job Description*</label>
-          <textarea name="" id="" class="input" rows="8"></textarea>
+          <textarea
+            name=""
+            id=""
+            class="input"
+            rows="8"
+            formControlName="description"
+            [ngClass]="{ 'border-red': description?.invalid && description?.touched && description?.errors?.['required'] }"
+          ></textarea>
+          <p
+            *ngIf="description?.invalid && description?.touched && description?.errors?.['required']"
+            class="text-red font-sm"
+          >
+            {{ required }}
+          </p>
         </div>
         <div class="input-group mt-2">
           <div class="col-12-xs col-8-md col-6-xl">
-            <label for="category" class="font-md">Category*</label>
-            <select name="" id="category" class="input">
-              <option value="software">Software development</option>
-              <option value="accounting">Accounting</option>
-              <option value="marketing">Marketing</option>
-              <option value="hr">HR</option>
-              <option value="it">IT</option>
-              <option value="other">Other</option>
+            <label for="location" class="font-md">Location*</label>
+            <select
+              name=""
+              id="location"
+              class="input"
+              formControlName="location"
+              [ngClass]="{ 'border-red': location?.invalid && location?.touched && location?.errors?.['required'] }"
+            >
+              <option value="lagos">Lagos</option>
+              <option value="abuja">Abuja</option>
+              <option value="accra">Accra</option>
             </select>
+            <p
+              *ngIf="location?.invalid && location?.touched && location?.errors?.['required']"
+              class="text-red font-sm"
+            >
+              {{ required }}
+            </p>
           </div>
           <div class="col-12-xs col-8-md col-6-xl">
             <label for="contact-name" class="font-md">Contract Type*</label>
-            <select name="" id="" class="input">
+            <select name="" id="" class="input" formControlName="type">
               <option value="fullTime">Full-time</option>
               <option value="partTime">Part-time</option>
               <option value="remote">Remote</option>
               <option value="freelance">Freelance</option>
               <option value="other">Other</option>
             </select>
+            <p
+              *ngIf="type?.invalid && type?.touched && type?.errors?.['required']"
+              class="text-red font-sm"
+            >
+              {{ required }}
+            </p>
           </div>
         </div>
         <div class="input-group mt-2">
           <div class="col-12-xs col-8-md col-6-xl">
             <label for="experience" class="font-md">Experience Required*</label>
-            <select name="" id="experience" class="input">
+            <select
+              name=""
+              id="experience"
+              class="input"
+              formControlName="experience"
+              [ngClass]="{ 'border-red': experience?.invalid && experience?.touched && experience?.errors?.['required'] }"
+            >
               <option value="noExperience">No Experience</option>
               <option value="oneYear">1 year</option>
               <option value="twoYears">2 years</option>
+              <option value="threeYears">3 years</option>
               <option value="threeToFiveYears">3 - 5 years</option>
               <option value="moreThanFiveYears">More than 5 years</option>
             </select>
+            <p
+              *ngIf="experience?.invalid && experience?.touched && experience?.errors?.['required']"
+              class="text-red font-sm"
+            >
+              {{ required }}
+            </p>
           </div>
           <div class="col-12-xs col-8-md col-6-xl">
-            <label for="educationLevel" class="font-md">Education Level*</label>
-            <select name="" id="educationLevel" class="input">
-              <option value="high school">High School</option>
-              <option value="bachelor">Bachelor</option>
-              <option value="master">Master</option>
-              <option value="doctorate">Doctorate</option>
-              <option value="other">Other</option>
-            </select>
+            <label for="salary" class="font-md">Salary*</label>
+            <input
+              type="number"
+              name="salary"
+              id=""
+              class="input"
+              formControlName="salary"
+              [ngClass]="{ 'border-red': salary?.invalid && salary?.touched && salary?.errors?.['required'] }"
+            />
+            <p
+              *ngIf="salary?.invalid && salary?.touched && salary?.errors?.['required']"
+              class="text-red font-sm"
+            >
+              {{ required }}
+            </p>
           </div>
         </div>
         <div class="button mt-2">
